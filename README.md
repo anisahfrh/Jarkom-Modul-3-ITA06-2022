@@ -291,4 +291,4 @@ jika berhasil mengakses
 
 jika gagal mengakses
 
-![gagal](ss/site-fail.PNG)
+![gagal](ss/site-fail.png)

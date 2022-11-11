@@ -287,4 +287,8 @@ Setelah konfigurasi dimasukan maka akan didapatkan 2 hasil:
 
 jika berhasil mengakses
 
+![berhasil](ss/working-site-success.PNG)
+
 jika gagal mengakses
+
+![gagal](ss/site-fail.PNG)

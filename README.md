@@ -5,7 +5,163 @@
 2. Banabil Fawazaim Muhammad - 5027201055
 3. Shafira Khaerunnisa - 5027201072
 ---
+## Gambar Topologi
 
+gambar
+
+Lakukan setting network masing-masing node dengan fitur `Edit network configuration` dengan setting sebagai berikut:
+- Ostania 
+```
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address 192.212.1.1
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address 192.212.2.1
+	netmask 255.255.255.0
+
+auto eth3
+iface eth3 inet static
+	address 192.212.3.1
+	netmask 255.255.255.0
+```
+
+- Wise 
+```
+auto eth0
+iface eth0 inet static
+	address 192.212.2.2
+	netmask 255.255.255.0
+	gateway 192.212.2.1
+```
+
+- Berlint 
+```
+auto eth0
+iface eth0 inet static
+	address 192.212.2.3
+	netmask 255.255.255.0
+	gateway 192.212.2.1
+```
+
+- Westalis 
+```
+auto eth0
+iface eth0 inet static
+	address 192.212.2.4
+	netmask 255.255.255.0
+	gateway 192.212.2.1
+```
+
+- SSS 
+```
+#auto eth0
+#iface eth0 inet static
+#	address 192.212.1.2
+#	netmask 255.255.255.0
+#	gateway 192.212.1.1
+
+auto eth0
+iface eth0 inet dhcp
+```
+
+- Garden
+```
+#auto eth0
+#iface eth0 inet static
+#	address 192.212.1.3
+#	netmask 255.255.255.0
+#	gateway 192.212.1.1
+
+auto eth0
+iface eth0 inet dhcp
+```
+
+- Eden
+```
+#auto eth0
+#iface eth0 inet static
+#	address 192.212.3.2
+#	netmask 255.255.255.0
+#	gateway 192.212.3.1
+
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether 26:88:e7:9e:2d:08
+```
+
+- NewstonCastle 
+```
+#auto eth0
+#iface eth0 inet static
+#	address 192.212.3.3
+#	netmask 255.255.255.0
+#	gateway 192.212.3.1
+
+auto eth0
+iface eth0 inet dhcp
+```
+
+- KemonoPark 
+```
+#auto eth0
+#iface eth0 inet static
+#	address 192.212.3.4
+#	netmask 255.255.255.0
+#	gateway 192.212.3.1
+
+auto eth0
+iface eth0 inet dhcp
+```
+
+## Soal 1 
+Loid bersama Franky berencana membuat peta tersebut dengan kriteria WISE sebagai DNS Server, Westalis sebagai DHCP Server, Berlint sebagai Proxy Server (1), dan Ostania sebagai DHCP Relay (2). Loid dan Franky menyusun peta tersebut dengan hati-hati dan teliti.
+
+### Penyelesaian Soal 1 
+- Pada WISE, install `bind9` untuk konfigurasi DNS Server
+```
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
+apt-get update
+apt-get install bind9 -y
+```
+
+Pada Berlint, install `isc-dhcp-server` untuk konfigurasi DHCP Server  
+```
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
+apt-get update
+apt-get install isc-dhcp-server -y
+```
+
+Pada Westalis, install `squid` untuk konfigurasi Proxy Server 
+```
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
+apt-get update
+apt-get install libapache2-mod-php7.0 -y
+apt-get install squid -y
+```
+
+## Soal 2
+Ostania sebagai DHCP Relay (2) Loid dan Franky menyusun peta tersebut dengan hati-hati dan teliti.
+
+### Penyelesaian Soal 2
+- Pada Ostania, install `isc-dhcp-relay ` dengan perintah sebagai berikut :
+```
+apt-get update -y
+apt-get install nano -y
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.217.0.0/16
+apt-get install isc-dhcp-relay -y
+service isc-dhcp-relay restart
+```
+
+- Melakukan konfigurasi pada Ostania dengan mengedit `file /etc/default/isc-dhcp-relay`seperti gambar dibawah ini : 
+gambarr
+
+Kami mengisi nameserver Westalis `192.217.2.4` sebagai dhcp-server dan interfaces yang kami gunakan yaitu `eth1 eth2 eth3`
 
 
 ## Soal 3, 4, 5, dan 6

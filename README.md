@@ -6,8 +6,10 @@
 3. Shafira Khaerunnisa - 5027201072
 ---
 ## Gambar Topologi
+Berikut merupakan gambar topologi yang kami buat 
 
-gambar
+![image](https://user-images.githubusercontent.com/76768695/201472012-11c21686-dcc7-4abe-b185-c3c7a34912b8.png)
+
 
 Lakukan setting network masing-masing node dengan fitur `Edit network configuration` dengan setting sebagai berikut:
 - Ostania 
@@ -158,10 +160,12 @@ apt-get install isc-dhcp-relay -y
 service isc-dhcp-relay restart
 ```
 
-- Melakukan konfigurasi pada Ostania dengan mengedit `file /etc/default/isc-dhcp-relay`seperti gambar dibawah ini : 
-gambarr
+- Melakukan konfigurasi pada Ostania dengan mengedit file `/etc/default/isc-dhcp-relay`seperti gambar dibawah ini : 
 
-Kami mengisi nameserver Westalis `192.217.2.4` sebagai dhcp-server dan interfaces yang kami gunakan yaitu `eth1 eth2 eth3`
+![image](https://user-images.githubusercontent.com/76768695/201472170-8b2378d0-50c1-49be-8296-32c88b6c02e4.png)
+
+
+Kami mengisi server dengan `192.217.2.4` (Westalis) sebagai dhcp-server dan interfaces yang kami gunakan yaitu `eth1 eth2 eth3`
 
 
 ## Soal 3, 4, 5, dan 6
